@@ -73,25 +73,23 @@
             document.getElementById("action").innerHTML = "{'details':'Process started again'}";
             $.ajax({
                 xhr: function () {
-                    let xhr = new window.XMLHttpRequest();
                     xhr.upload.addEventListener('progress', function(e) {
                         if (e.computableLenth) {
-                            console.log('Bytes Loaded: ' + e.loaded);
-                            console.log('Total Size: ' + e.total);
-                            console.log('Percentage Uploaded: ' + (e.total / e.loaded) * 100)
+                            console.log('Bytes Loaded: ' + bytesLoaded);
+                            console.log('Total Size: ' + totalSize);
+                            console.log('Percentage Uploaded: ' + (totalSize / bytesLoaded) * 100)
     
-                            let percent = Math.round((e.total / e.loaded) * 100);
-                            let percent2 = Math.round((totalSize/bytesLoaded) * 100);
+                            let percent = Math.round((totalSize / bytesLoaded) * 100);
+                            //let percent2 = Math.round((totalSize/bytesLoaded) * 100);
                             if(percent == 100) {
                                 pausebtn.style.display = continuebtn.style.display = stopbtn.style.display = "none";
                             }
-                            if(percent < percent2) {
-                               console.log("skipping");
-                            }
-                            else {
-                                $('#progressBar').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
-                            }
-    
+                            // if(percent < percent2) {
+                            //    continue;
+                            // }
+                            //else{
+                            document.getElementById("response").innerHTML = percent;
+                            //}
                         }
     
                     });
