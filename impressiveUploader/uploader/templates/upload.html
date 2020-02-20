@@ -28,7 +28,7 @@
  
  
     <div>
-        <form action="{% url 'uploader:uploadFile' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'api:upload' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.as_p}}
             <input type="submit" value="ok">
@@ -41,11 +41,11 @@
             </div>
         </div>
 
-        <button class="btn btn-info" style="display:none;" id="pausebtn">Pause</button>
+        <button class="btn btn-info" style="display:none;" id="pausebtn">Stop</button>
 
         <div id="action">
             <button class="btn btn-block" style="display:none" id="continuebtn">Continue</button>
-            <button class="btn btn-block" style="display:none" id="stopbtn">Stop</button>
+            <button class="btn btn-block" style="display:none" id="stopbtn">Abort</button>
         </div>
 
     </div>

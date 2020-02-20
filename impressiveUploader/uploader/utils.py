@@ -10,5 +10,5 @@ def handle_upload(file):
     fileName = file.name
     with open(os.path.join(saved_location,fileName), 'wb') as fileDestination:
         for chunks in file.chunks():
-            print("Writing chunk")
+            print("writing chunks")
             fileDestination.write(chunks)

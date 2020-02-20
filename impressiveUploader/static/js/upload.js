@@ -11,7 +11,6 @@
 
         let bytesLoaded = 0;
         let totalSize = 0;
-        let computableLenth;
         let xhr = new window.XMLHttpRequest();
         let formData = new FormData($('form')[0]);
         $.ajax({
@@ -62,27 +61,36 @@
 
         stopbtn.addEventListener("click", function(){
             console.log("Aborted");
+            continuebtn.style.display = "none";
+            stopbtn.style.display = "none";
+            pausebtn.style.display = "none";
             document.getElementById("response").innerHTML = `{"details":"Process Terminated", "status": "200_OK"}`
             xhr.abort();
         });
 
-        continuebtn.addEventListener("click", function(){
+        continuebtn.addEventListener("click", function(event){
             //stating again
+            document.getElementById("action").innerHTML = "{'details':'Process started again'}";
             $.ajax({
                 xhr: function () {
-                    xhr = new window.XMLHttpRequest();
+                    let xhr = new window.XMLHttpRequest();
                     xhr.upload.addEventListener('progress', function(e) {
                         if (e.computableLenth) {
-                            console.log('Bytes Loaded: ' + bytesLoaded);
-                            console.log('Total Size: ' + totalSize);
-                            console.log('Percentage Uploaded: ' + (totalSize / bytesLoaded) * 100)
+                            console.log('Bytes Loaded: ' + e.loaded);
+                            console.log('Total Size: ' + e.total);
+                            console.log('Percentage Uploaded: ' + (e.total / e.loaded) * 100)
     
-                            let percent = Math.round((totalSize / bytesLoaded) * 100);
+                            let percent = Math.round((e.total / e.loaded) * 100);
+                            let percent2 = Math.round((totalSize/bytesLoaded) * 100);
                             if(percent == 100) {
                                 pausebtn.style.display = continuebtn.style.display = stopbtn.style.display = "none";
                             }
-    
-                            $('#progressBar').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
+                            if(percent < percent2) {
+                               console.log("skipping");
+                            }
+                            else {
+                                $('#progressBar').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
+                            }
     
                         }
     
