@@ -1,10 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{% static 'js/upload.js' %}"></script>
+ 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+ 
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+        integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+ 
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
+    </script>
+</head>
+ 
+<body>
+ 
+ 
+    <div>
+        <form action="{% url 'uploader:uploadFile' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="ok">
+        </form>
+ 
+        <div class="progress">
+            <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100" style="width: 0%;">
+                0%
+            </div>
+        </div>
 
-{% load static %}
+        <button class="btn btn-info" style="display:none;" id="pausebtn">Pause</button>
 
-{% block content %}
-    <form action="{% url 'uploader:uploadFile' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-        {{form}}
-    <button type="submit" class="btn btn-danger">Upload file</button>
-    </form>
-{% endblock %}
+        <div id="action">
+            <button class="btn btn-block" style="display:none" id="continuebtn">Continue</button>
+            <button class="btn btn-block" style="display:none" id="stopbtn">Stop</button>
+        </div>
+
+    </div>
+
+    <div id="response">
+      <p></p>
+    </div>
+
+</body>
+ 
+</html>

@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Custom
     'uploader',
+
+    #Third party
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
