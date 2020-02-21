@@ -1,13 +1,17 @@
+import time, os, json
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.parsers import FileUploadParser, FormParser, MultiPartParser
 
+from django.http import HttpResponse
 
 from .serializers import UploadFileSerializer
 
 from uploader.forms import UploadFileForm
 from uploader.utils import handle_upload
+
+from impressiveUploader.settings import MEDIA_ROOT
 
 
 class UploadFileAPIView(APIView):
