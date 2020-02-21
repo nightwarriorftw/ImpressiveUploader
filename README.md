@@ -176,6 +176,11 @@ Make sure that there is onle one extra line after the file ends and remember the
 
 Pictures of project.
 
+![Front Page](./graphics/front.png)
+![Uploading](./graphics/uploading.png)
+![Pause](./graphics/pause.png)
+![Stop](./graphics/abort.png)
+
 ## :star2: Credit/Acknowledgment
 
 Credits goes to me and other contributors
