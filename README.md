@@ -176,9 +176,13 @@ Make sure that there is onle one extra line after the file ends and remember the
 
 Pictures of project.
 
+#### Front page
 ![Front Page](./graphics/front.png)
+#### Uploading state
 ![Uploading](./graphics/uploading.png)
+#### Pause state
 ![Pause](./graphics/pause.png)
+#### Stop/Rollback state
 ![Stop](./graphics/abort.png)
 
 ## :star2: Credit/Acknowledgment
