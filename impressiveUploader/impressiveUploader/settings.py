@@ -25,7 +25,7 @@ SECRET_KEY = '+aw!p(z9cx(gh^p&jsr3f=(-2^szyy7ovkmry-k+oa@7xaenx2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -52,8 +52,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # upload file handling
-
 ]
 
 ROOT_URLCONF = 'impressiveUploader.urls'
